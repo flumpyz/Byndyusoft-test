@@ -9,12 +9,16 @@ const Index = () => {
         setInputValue(event.target.value);
     }
 
+    function handleSubmit() {
+    }
+
     return (
         <form className={cx(s.inputFormContainer)}>
-            <p className={cx(s.inputFormContainer__title)}>Input value : {inputValue}</p>
+            <h1 className={cx(s.inputFormContainer__title)}>Введите числа массива через запятую</h1>
+            <h1 className={cx(s.inputFormContainer__title)}>Input value : {inputValue}</h1>
             <textarea className={cx(s.inputFormContainer__textarea)} value={inputValue} onChange={handleChange}/>
 
-            <input className={cx(s.inputFormContainer__submit)} type="submit"/>
+            <input className={cx(s.inputFormContainer__submit)} type="submit" onSubmit={handleSubmit}/>
         </form>
     );
 };

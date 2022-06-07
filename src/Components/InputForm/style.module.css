@@ -100,16 +100,34 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "Raleway", sans-serif;
 }
 .inputFormContainer__title {
-  font-family: "Raleway", sans-serif;
   font-weight: 700;
+  font-size: 24px;
 }
 .inputFormContainer__textarea {
+  width: 300px;
+  height: 100px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   outline: none;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
 }
 .inputFormContainer__textarea:focus, .inputFormContainer__textarea:active {
   border: 1px solid #1E90FF;
+  box-shadow: 0px 17px 42px rgba(0, 0, 0, 0.12);
+}
+.inputFormContainer__submit {
+  width: 150px;
+  height: 40px;
+  border: 1px solid #D3D3D3;
+  border-radius: 10px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 /*# sourceMappingURL=style.module.css.map */
