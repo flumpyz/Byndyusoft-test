@@ -17,7 +17,13 @@ const Index = () => {
     }
 
     function handleSubmit(event) {
-        alert(calculateMinPairInArraySum(inputValue, isIgnoredErrorsMode));
+        let calculateSumResult = calculateMinPairInArraySum(inputValue, isIgnoredErrorsMode);
+
+        if (typeof calculateSumResult !== "string") {
+            alert(`Сумма двух минимальных чисел массива : ${calculateSumResult}`);
+        } else {
+            alert(calculateSumResult);
+        }
         setInputValue("");
     }
 
@@ -31,8 +37,7 @@ const Index = () => {
 
     return (
         <form className={cx(s.inputFormContainer)} onSubmit={handleSubmit}>
-            <h1 className={cx(s.inputFormContainer__title)}>Введите числа массива через запятую</h1>
-            <h1 className={cx(s.inputFormContainer__title)}>Input value : {inputValue}</h1>
+            <h1 className={cx(s.inputFormContainer__title)}>Введите числа массива через запятую :</h1>
             <textarea className={cx(s.inputFormContainer__textarea)}
                       ref={textareaElement}
                       value={inputValue}
