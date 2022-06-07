@@ -12,11 +12,11 @@ const Index = () => {
         setInputValue(event.target.value);
     }
 
-    function handleCheckboxChange(event) {
+    function handleCheckboxChange() {
         setIsIgnoredErrorsMode(!isIgnoredErrorsMode);
     }
 
-    function handleSubmit(event) {
+    function handleSubmit() {
         let calculateSumResult = calculateMinPairInArraySum(inputValue, isIgnoredErrorsMode);
 
         if (typeof calculateSumResult !== "string") {
