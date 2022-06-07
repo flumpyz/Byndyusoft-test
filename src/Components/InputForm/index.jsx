@@ -1,18 +1,23 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import cx from 'classnames';
 import s from './style.module.css';
-import {calculateMinPairInArraySum} from "../../Services/arrayService";
+import calculateMinPairInArraySum from "../../Services/arrayService";
 
 const Index = () => {
     const [inputValue, setInputValue] = useState("");
+    const [isIgnoredErrorsMode, setIsIgnoredErrorsMode] = useState(false);
     const textareaElement = useRef();
 
     function handleChange(event) {
         setInputValue(event.target.value);
     }
 
+    function handleCheckboxChange(event) {
+        setIsIgnoredErrorsMode(!isIgnoredErrorsMode);
+    }
+
     function handleSubmit(event) {
-        calculateMinPairInArraySum(inputValue);
+        alert(calculateMinPairInArraySum(inputValue, isIgnoredErrorsMode));
         setInputValue("");
     }
 
@@ -33,6 +38,10 @@ const Index = () => {
                       value={inputValue}
                       onChange={handleChange}
                       onKeyPress={handleKeyPress}/>
+
+            <label className={cx(s.inputFormContainer__label)}>Режим игнорирования ошибок
+                <input type="checkbox" className={cx(s.inputFormContainer__checkbox)} checked={isIgnoredErrorsMode} onChange={handleCheckboxChange}/>
+            </label>
 
             <input className={cx(s.inputFormContainer__submit)} type="submit"/>
         </form>

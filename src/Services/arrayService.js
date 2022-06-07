@@ -1,16 +1,22 @@
-export function calculateMinPairInArraySum(arrayInString) {
-    let array = parseStringToNumbersArray(arrayInString);
+function calculateMinPairInArraySum(arrayInString, isIgnoredErrorsMode) {
+    let array = parseStringToNumbersArray(arrayInString, isIgnoredErrorsMode);
+
+    if (typeof array === "string") {
+        return array;
+    }
 
     let [firstNumber, secondNumber] = findMinimumPairInArray(array);
-    let sum = firstNumber + secondNumber;
 
-    alert(`sum : ${sum}`);
-    return sum;
+    if (firstNumber === null && secondNumber === null) {
+        return 'Not enough items';
+    }
+
+    return firstNumber + secondNumber;
 }
 
 function findMinimumPairInArray(numbersArray) {
     if (numbersArray.length < 2) {
-        return;
+        return [null, null];
     }
 
     let firstMinNumber = numbersArray[0];
@@ -30,22 +36,26 @@ function findMinimumPairInArray(numbersArray) {
         }
     }
 
-    alert(`first: ${firstMinNumber}  second: ${secondMinNumber}`);
     return [firstMinNumber, secondMinNumber];
 }
 
-function parseStringToNumbersArray(arrayInString) {
+function parseStringToNumbersArray(arrayInString, isIgnoredErrorsMode) {
+    if (arrayInString.trim().length === 0) {
+        return 'Not enough items';
+    }
+
     let array = arrayInString.split(",");
     let resultArray = [];
 
     for (let i = 0; i < array.length; i++) {
         if (!isNaN(Number(array[i])) && array[i].trim() !== '') {
             resultArray.push(Number(array[i]));
+        } else if (!isIgnoredErrorsMode) {
+            return "Incorrect Input";
         }
     }
-
-    console.log(`get ${resultArray}`);
 
     return resultArray;
 }
 
+module.exports = calculateMinPairInArraySum;
