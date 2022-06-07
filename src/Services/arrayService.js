@@ -4,7 +4,7 @@ export function calculateMinPairInArraySum(arrayInString) {
     let [firstNumber, secondNumber] = findMinimumPairInArray(array);
     let sum = firstNumber + secondNumber;
 
-    alert (`sum : ${sum}`);
+    alert(`sum : ${sum}`);
     return sum;
 }
 
